@@ -1,0 +1,5 @@
+#!/bin/sh
+
+set -e
+
+python-lambda-local -f proxy_handler -t 5 entrypoint.py fixtures/event1.json

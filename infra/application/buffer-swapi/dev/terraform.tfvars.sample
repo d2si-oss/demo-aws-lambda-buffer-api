@@ -1,3 +1,4 @@
 allowed_account_id = 5202xxxxxx
 component = "swapi"
 api_description = "SWAPI buffer, a proxy on the Star War API"
+base_api = "http://swapi.co"

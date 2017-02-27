@@ -1,0 +1,32 @@
+{
+  "body": {},
+  "headers": {
+    "Via": "1.1 7a9ed25dd09a090668449cecd55a9d0d.cloudfront.net (CloudFront)",
+    "Accept-Encoding": "identity",
+    "CloudFront-Is-SmartTV-Viewer": "false",
+    "CloudFront-Forwarded-Proto": "https",
+    "X-Forwarded-For": "81.220.58.218, 54.240.156.86",
+    "CloudFront-Viewer-Country": "FR",
+    "Accept": "*/*",
+    "User-Agent": "Wget/1.19.1 (darwin16.4.0)",
+    "X-Amzn-Trace-Id": "Root=1-58b48578-410c2c334b7bb926776e4db5",
+    "Host": "xc3ku17l3m.execute-api.eu-west-1.amazonaws.com",
+    "X-Forwarded-Proto": "https",
+    "X-Amz-Cf-Id": "1XeUqg7MtpBAmsF1o9P6jAxyZlXk8zrtacr3EbPzXR0K7-uHFzqHig==",
+    "CloudFront-Is-Tablet-Viewer": "false",
+    "X-Forwarded-Port": "443",
+    "CloudFront-Is-Mobile-Viewer": "false",
+    "CloudFront-Is-Desktop-Viewer": "true"
+  },
+  "resourcePath": "/{proxy+}",
+  "httpMethod": "GET",
+  "params": {
+    "proxy": "api/people/1"
+  },
+  "stageVariables": {
+    "LBD_ENV": "dev",
+    "BASE_API": "http://swapi.co"
+  },
+  "query": {},
+  "stage": "dev"
+}
