@@ -26,3 +26,4 @@ tmp/*
 
 code/*/vendor/*
 code/*/report/*
+build/*
