@@ -7,8 +7,11 @@ clean_pyc: ## Remove your *.pyc files
 install_deps: ## Install your python dependencies
 	pip install -r requirements.txt -t vendor
 
-check:
+check: ## Check your local dependencies
 	./script/check
 
-watch:
+watch: ## Run the watch script
 	./script/watcher
+
+build: ## Build the lambda-local image
+	docker build -t lambda-local .

@@ -2,4 +2,4 @@
 
 set -e
 
-python-lambda-local -f proxy_handler -t 5 entrypoint.py fixtures/event1.json
+docker run -v $(PWD):/code lambda-local -f proxy_handler -t 5 entrypoint.py fixtures/event1.json
