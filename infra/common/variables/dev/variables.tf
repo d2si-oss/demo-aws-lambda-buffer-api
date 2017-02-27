@@ -14,3 +14,9 @@ variable "environment" {
 variable "application" {
   default = "buffer"
 }
+
+variable "component" {
+}
+
+variable "api_description" {
+}

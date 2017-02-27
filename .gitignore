@@ -27,3 +27,4 @@ tmp/*
 code/*/vendor/*
 code/*/report/*
 build/*
+*.tfvars
