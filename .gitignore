@@ -1,0 +1,28 @@
+# Compiled source #
+###################
+*.pyc
+
+# Dependencies #
+################
+.installed.cfg
+/libs/
+
+# Logs and databases #
+######################
+*.log
+
+# Terraform #
+#############
+.terraform
+*tfstate*
+
+# Other #
+#########
+
+*.log
+tmp/*
+*.env
+!.keep
+
+code/*/vendor/*
+code/*/report/*
