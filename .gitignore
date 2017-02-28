@@ -15,6 +15,7 @@
 #############
 .terraform
 *tfstate*
+*.tfvars
 
 # Other #
 #########
@@ -26,5 +27,4 @@ tmp/*
 
 code/*/vendor/*
 code/*/report/*
-build/*
-*.tfvars
+*/build/*
