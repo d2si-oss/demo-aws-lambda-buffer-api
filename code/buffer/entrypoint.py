@@ -17,21 +17,26 @@ def log_event(event):
     log.debug('params: ' + str(event.get('params', '')))
     log.debug('query: '+ str(event.get('query', '')))
 
-def query(query):
-    headers = {}
-    response = requests.get(query, headers=headers)
-    if response.status_code != 200:
-        raise Exception('Resource does not exist ' + str(response.status_code) + query )
+def query(url, method, headers, data, params):
+    if method == 'get' or method == 'post':
+        response = requests.__getattribute__(method)(url, headers=headers, data=data, params=params)
+    if response.status_code != requests.codes.ok:
+        response.raise_for_status()
     return response
 
 def proxy_handler(event, context):
     """Call the base API with proxy params and return the response
     """
     log_event(event)
-    scheme = 'https://'
     base_api = event['stageVariables']['BASE_API']
-    text = query("{0}/{1}/".format(
-        base_api,
-        event['params']['proxy'])
-    ).text.replace(base_api, scheme + event['headers']['Host'] + '/' + event['stage'])
+    headers = {}
+    text = query(
+        "{0}/{1}/".format(base_api, event['params']['proxy']),
+        event['httpMethod'].lower(),
+        headers,
+        event['body'],
+        event['params']
+    ).text
+    scheme = 'https://'
+    text = text.replace(base_api, scheme + event['headers']['Host'] + '/' + event['stage'])
     return json.loads(text)
