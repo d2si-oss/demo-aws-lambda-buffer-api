@@ -1,0 +1,19 @@
+version: '3'
+services:
+  artillery:
+    build:
+      context: .
+    volumes:
+        - .:/code
+  statsd:
+    image: jlachowski/grafana-graphite-statsd
+    container_name: 'statsd'
+    ports:
+      - '80:80'
+      - '81:81'
+      - '2003-2004:2003-2004'
+      - '2023-2024:2023-2024'
+      - '8125:8125/udp'
+      - '8126:8126'
+    volumes:
+      - ./log/supervisor:/var/log/supervisor

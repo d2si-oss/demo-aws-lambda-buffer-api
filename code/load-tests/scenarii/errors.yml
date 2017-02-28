@@ -1,0 +1,18 @@
+config:
+  environments:
+    dev:
+      target: 'https://xc3ku17l3m.execute-api.eu-west-1.amazonaws.com/dev'
+      defaults:
+        headers:
+          Accept: "application/json"
+          Content-type: "application/json"
+  phases:
+    - duration: 5
+      arrivalRate: 3
+scenarios:
+  - name: "Errors on the proxied API"
+    flow:
+      - get:
+          url: "/this-path-can-t-be-reach"
+      - post:
+          url: "/error/error/error"

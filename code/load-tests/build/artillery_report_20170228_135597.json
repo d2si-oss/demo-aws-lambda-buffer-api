@@ -1,0 +1,170 @@
+{
+  "aggregate": {
+    "timestamp": "2017-02-28T13:55:55.065Z",
+    "scenariosCreated": 15,
+    "scenariosCompleted": 15,
+    "requestsCompleted": 15,
+    "latency": {
+      "min": 284.9,
+      "max": 643.1,
+      "median": 354.7,
+      "p95": 622.7,
+      "p99": null
+    },
+    "rps": {
+      "count": 15,
+      "mean": 2.91
+    },
+    "scenarioDuration": {
+      "min": 287.2,
+      "max": 648.5,
+      "median": 357.9,
+      "p95": 627.4,
+      "p99": null
+    },
+    "scenarioCounts": {
+      "Just ping the API": 15
+    },
+    "errors": {},
+    "codes": {
+      "200": 15
+    },
+    "matches": 0,
+    "customStats": {},
+    "phases": [
+      {
+        "duration": 5,
+        "arrivalRate": 3
+      }
+    ]
+  },
+  "intermediate": [
+    {
+      "timestamp": "2017-02-28T13:55:55.052Z",
+      "scenariosCreated": 15,
+      "scenariosCompleted": 15,
+      "requestsCompleted": 15,
+      "latency": {
+        "min": 284.9,
+        "max": 643.1,
+        "median": 354.7,
+        "p95": 622.7,
+        "p99": null
+      },
+      "rps": {
+        "count": 15,
+        "mean": 2.91
+      },
+      "scenarioDuration": {
+        "min": 287.2,
+        "max": 648.5,
+        "median": 357.9,
+        "p95": 627.4,
+        "p99": null
+      },
+      "scenarioCounts": {
+        "Just ping the API": 15
+      },
+      "errors": {},
+      "codes": {
+        "200": 15
+      },
+      "matches": 0,
+      "latencies": [
+        [
+          1488290150304,
+          "f83fb1aa-da7d-4c1f-9e6b-8286834804a1",
+          399170977,
+          200
+        ],
+        [
+          1488290150522,
+          "eeef98a4-6773-4b69-92a0-38ef35590eed",
+          297773988,
+          200
+        ],
+        [
+          1488290150873,
+          "c351b45c-5725-4d05-b0e8-7ad80794e1ac",
+          329742416,
+          200
+        ],
+        [
+          1488290151219,
+          "3935d3dd-7ff6-43e2-bd9b-025944d8fcc8",
+          337624969,
+          200
+        ],
+        [
+          1488290151527,
+          "98ba8f48-e930-4e16-b767-d2a740effcd7",
+          317797370,
+          200
+        ],
+        [
+          1488290152188,
+          "6c21c7a5-bb0e-45aa-af7c-ea519388c76c",
+          643121987,
+          200
+        ],
+        [
+          1488290152340,
+          "02c6cfbb-7df6-4158-a497-6701f03d1596",
+          464957180,
+          200
+        ],
+        [
+          1488290152564,
+          "57388dd6-e665-487f-a243-1157453aa388",
+          354742875,
+          200
+        ],
+        [
+          1488290152896,
+          "4cdd7a7a-94ef-4f56-8120-fc3bef1f649c",
+          353360109,
+          200
+        ],
+        [
+          1488290153229,
+          "235fb6f9-6ecf-40b9-903a-9ec86a075a47",
+          354803307,
+          200
+        ],
+        [
+          1488290153492,
+          "a9b9c823-4881-426c-94b5-e5ff6b1c51f8",
+          284876099,
+          200
+        ],
+        [
+          1488290154105,
+          "0196ee6c-20bf-4718-8852-138aa171b361",
+          561536715,
+          200
+        ],
+        [
+          1488290154249,
+          "4c1d2f2b-f7ca-4ae5-ba56-49ecf27075cb",
+          376382264,
+          200
+        ],
+        [
+          1488290154558,
+          "e09eaada-aaa8-4c83-bc74-7ce2477c1fc0",
+          352182516,
+          200
+        ],
+        [
+          1488290154932,
+          "1209c350-1e8a-4948-a487-5c66d049f814",
+          392322077,
+          200
+        ]
+      ],
+      "customStats": {},
+      "concurrency": 2,
+      "pendingRequests": 3
+    }
+  ]
+}
