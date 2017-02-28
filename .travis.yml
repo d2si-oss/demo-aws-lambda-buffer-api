@@ -1,0 +1,18 @@
+language: python
+python:
+- '2.7'
+git:
+  depth: 10
+install:
+  - sudo script/install.sh
+script:
+  - script/tests.sh
+deploy:
+- provider: script
+  skip_cleanup: true
+  script: script/deploy.sh
+  on:
+    branch:
+    - develop
+    - master
+    python: '2.7'

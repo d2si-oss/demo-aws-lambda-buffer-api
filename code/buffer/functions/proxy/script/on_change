@@ -1,5 +1,13 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 set -e
 
-docker run -v $(PWD):/code lambda-local -f proxy_handler -t 5 entrypoint.py fixtures/event1.json
+run-lambda-test()
+{
+  handler=$1
+  event=$2
+  echo 'Run a lambda-test'
+  docker run -v $(PWD):/code lambda-local -f $handler -t 5 entrypoint.py $event
+}
+
+run-lambda-test proxy_handler fixtures/event1.json
