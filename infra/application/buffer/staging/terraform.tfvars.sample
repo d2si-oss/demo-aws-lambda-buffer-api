@@ -1,0 +1,3 @@
+allowed_account_id = 5202xxxxxx
+component = "api"
+api_description = "SWAPI buffer, a proxy on the Star War API"

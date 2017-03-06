@@ -5,7 +5,7 @@ provider "aws" {
 
 # Modules
 module "vars" {
-  source = "../../modules/format_variables"
+  source = "../../../modules/format_variables"
 
   env         = "${var.environment}"
   application = "${var.application}"
@@ -13,7 +13,7 @@ module "vars" {
 }
 
 module "api" {
-  source      = "../../modules/api_gateway"
+  source      = "../../../modules/api_gateway"
   name        = "${module.vars.fully_qualified_name}"
   description = "${var.api_description}"
 }
@@ -68,12 +68,12 @@ resource "aws_iam_policy_attachment" "logconf_to_api" {
   policy_arn = "${aws_iam_policy.logconf.arn}"
 }
 
+/*
 data "archive_file" "buffer" {
   type        = "zip"
   source_dir  = "../../../../code/buffer/functions/proxy"
   output_path = "../../../build/buffer-proxy.zip"
 }
-
 resource "aws_lambda_function" "proxy" {
   filename         = "${data.archive_file.buffer.output_path}"
   function_name    = "${module.vars.fully_qualified_name}-proxy"
@@ -84,6 +84,7 @@ resource "aws_lambda_function" "proxy" {
   timeout          = 10
   source_code_hash = "${data.archive_file.buffer.output_base64sha256}"
 }
+*/
 
 module "proxy" {
   source             = "../../../modules/api_integration_lambda"
@@ -91,7 +92,7 @@ module "proxy" {
   parent_id          = "${module.api.root_resource_id}"
   region             = "${var.region}"
   allowed_account_id = "${var.allowed_account_id}"
-  function_name      = "${aws_lambda_function.proxy.function_name}"
+  function_name      = "${module.vars.fully_qualified_name}-proxy"
   resource_part      = "{proxy+}"
   method             = "ANY"
   api_key_required   = "false"

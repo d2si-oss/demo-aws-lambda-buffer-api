@@ -1,0 +1,14 @@
+{
+  "name": "buffer",
+  "description": "Build Your Serverless API Caching service using APIGateway, Lambda and DynamoDB",
+  "memory": 128,
+  "timeout": 5,
+  "role": "arn:aws:iam::520296017627:role/staging-buffer-api",
+  "environment": {},
+  "runtime": "python",
+  "handler": "entrypoint.proxy_handler",
+  "retainedVersions": 25,
+  "nameTemplate": "staging-{{.Project.Name}}-api-{{.Function.Name}}",
+  "memory": 256,
+  "timeout": 10
+}
