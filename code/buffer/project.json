@@ -1,5 +1,5 @@
 {
-  "name": "buffer-swapi",
+  "name": "buffer",
   "description": "Build Your Serverless API Caching service using APIGateway, Lambda and DynamoDB",
   "memory": 128,
   "timeout": 5,

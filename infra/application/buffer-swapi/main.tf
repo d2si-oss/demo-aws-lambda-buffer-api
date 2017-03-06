@@ -98,13 +98,11 @@ module "proxy" {
 }
 
 # Deployment
-variable "base_api" {}
 resource "aws_api_gateway_deployment" "deployment" {
   rest_api_id = "${module.api.id}"
   stage_name  = "${var.environment}"
 
   variables = {
     "LBD_ENV" = "${var.environment}"
-    "BASE_API" = "${var.base_api}"
   }
 }

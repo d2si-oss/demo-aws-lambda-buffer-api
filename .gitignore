@@ -22,9 +22,8 @@
 
 *.log
 tmp/*
-*.env
 !.keep
 
-code/*/vendor/*
+code/**/vendor/*
 code/*/report/*
 */build/*

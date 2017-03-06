@@ -1,15 +1,27 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
-import settings
+
+import boot
+
 import json
 import logging
 import requests
+import os
+import boto3
+import random
+import time
 
 print('Loading entrypoint...')
 
 logging.basicConfig()
 log = logging.getLogger()
 log.setLevel(logging.DEBUG)
+
+# Load environment variables
+from os.path import join, dirname
+from dotenv import load_dotenv
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
 
 def log_event(event):
     log.debug('body: ' + str(event.get('body', '')))
@@ -28,7 +40,7 @@ def proxy_handler(event, context):
     """Call the base API with proxy params and return the response
     """
     log_event(event)
-    base_api = event['stageVariables']['BASE_API']
+    base_api = os.environ['BASE_API']
     headers = {}
     text = query(
         "{0}/{1}/".format(base_api, event['params']['proxy']),
