@@ -1,0 +1,6 @@
+Dockerfile
+*.pyc
+.keep
+fixtures
+script
+Makefile

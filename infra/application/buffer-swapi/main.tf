@@ -70,8 +70,8 @@ resource "aws_iam_policy_attachment" "logconf_to_api" {
 
 data "archive_file" "buffer" {
   type        = "zip"
-  source_dir  = "../../../../code/buffer"
-  output_path = "../../../build/buffer.zip"
+  source_dir  = "../../../../code/buffer/functions/proxy"
+  output_path = "../../../build/buffer-proxy.zip"
 }
 
 resource "aws_lambda_function" "proxy" {

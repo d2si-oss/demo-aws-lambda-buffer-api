@@ -1,0 +1,6 @@
+{
+  "description": "proxy_handler for the buffer API",
+  "hooks":{
+    "build": "pip install -r requirements.txt -t vendor"
+  }
+}
