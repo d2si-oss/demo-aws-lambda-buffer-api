@@ -3,6 +3,7 @@ from __future__ import print_function
 
 import boot
 
+# vendor
 import json
 import logging
 import requests
@@ -10,6 +11,9 @@ import os
 import boto3
 import random
 import time
+
+# libs
+from cache import Cache
 
 print('Loading entrypoint...')
 
@@ -23,15 +27,27 @@ from dotenv import load_dotenv
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
+AWS_DEFAULT_REGION = 'eu-west-1'
+TABLE_NAME_SUF = "-buffer-api-proxy"
+
 def log_event(event):
     log.debug('body: ' + str(event.get('body', '')))
     log.debug('method: ' + str(event.get('method', '')))
     log.debug('params: ' + str(event.get('params', '')))
     log.debug('query: '+ str(event.get('query', '')))
 
-def query(url, method, headers, data, params):
+def query(url, method, headers, data, params, stage):
     if method == 'get' or method == 'post':
-        response = requests.__getattribute__(method)(url, headers=headers, data=data, params=params)
+        buffy = Cache(AWS_DEFAULT_REGION, stage + TABLE_NAME_SUF)
+        payload = dict(data.items() + params.items())
+        doc = buffy.get_doc(url, payload)
+        if doc is None:
+            doc = requests.__getattribute__(method)(url, headers=headers, data=data, params=params).text
+            buffy.set_doc(url, payload, doc)
+            return doc
+        else:
+            return doc
+
     if response.status_code != requests.codes.ok:
         response.raise_for_status()
     return response
@@ -47,8 +63,9 @@ def proxy_handler(event, context):
         event['httpMethod'].lower(),
         headers,
         event['body'],
-        event['params']
-    ).text
+        event['params'],
+        event['stage']
+    )
     scheme = 'https://'
     text = text.replace(base_api, scheme + event['headers']['Host'] + '/' + event['stage'])
     return json.loads(text)
