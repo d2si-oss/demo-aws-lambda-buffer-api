@@ -1,5 +1,8 @@
 # Change Log
 
+## [v0.2](https://github.com/d2si-oss/demo-aws-lambda-buffer-api/tree/v0.2) (2017-03-07)
+[Full Changelog](https://github.com/d2si-oss/demo-aws-lambda-buffer-api/compare/v0.1...v0.2)
+
 ## [v0.1](https://github.com/d2si-oss/demo-aws-lambda-buffer-api/tree/v0.1) (2017-03-07)
 **Merged pull requests:**
 
