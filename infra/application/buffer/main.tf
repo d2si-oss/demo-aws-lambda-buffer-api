@@ -70,7 +70,7 @@ resource "aws_iam_policy_attachment" "logconf_to_api" {
 
 /*
 * Uncomment this code if you want to destribute your lambda function
-* without the apex binary 
+* without the apex binary
 */
 
 /*
@@ -111,4 +111,49 @@ resource "aws_api_gateway_deployment" "deployment" {
   variables = {
     "LBD_ENV" = "${var.environment}"
   }
+}
+
+# Resources Dynamo
+resource "aws_dynamodb_table" "buffer" {
+  name           = "${module.vars.fully_qualified_name}-proxy"
+  read_capacity  = 5
+  write_capacity = 5
+  hash_key       = "cache_key"
+
+  attribute {
+    name = "cache_key"
+    type = "S"
+  }
+}
+
+resource "aws_iam_policy" "dynamo" {
+  name = "${module.vars.fully_qualified_name}-dynamo"
+
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "lambda:InvokeFunction"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "dynamodb:*"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+POLICY
+}
+
+resource "aws_iam_policy_attachment" "dynamo_to_api" {
+  name       = "${module.vars.fully_qualified_name}-dynamo"
+  roles      = ["${aws_iam_role.iam_for_lambda.name}"]
+  policy_arn = "${aws_iam_policy.dynamo.arn}"
 }

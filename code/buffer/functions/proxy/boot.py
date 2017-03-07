@@ -1,8 +1,10 @@
 # -- coding: utf-8 --
-LIBS_PATH = 'vendor'
+VENDOR_PATH = 'vendor'
+LIBS_PATH = 'lib'
 # Appends the directory containing our libraries to the sys path.
 import sys, os
 dir_path = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(os.path.join(dir_path, VENDOR_PATH))
 sys.path.append(os.path.join(dir_path, LIBS_PATH))
 
 # Manually load OS libraries

@@ -6,4 +6,4 @@ set -x
 echo 'run tests'
 # unit tests
 cd code/buffer/tests
-python tests_*
+python tests_cache.py
