@@ -2,6 +2,8 @@ Build a serverless API Buffer with AWS Lambda, API Gateway services, Terraform
 ===============================================================================
 [![Build Status](https://travis-ci.org/d2si-oss/demo-aws-lambda-buffer-api.svg?branch=master)](https://travis-ci.org/d2si-oss/demo-aws-lambda-buffer-api)
 
+[![Coverage Status](https://coveralls.io/repos/github/d2si-oss/demo-aws-lambda-buffer-api/badge.svg)](https://coveralls.io/github/d2si-oss/demo-aws-lambda-buffer-api)
+
 Project Overview
 ----------------
 

@@ -3,6 +3,6 @@
 set -e
 set -x
 
-pip install awscli
+pip install -r ci-requirements.txt
 apt-get install -y curl tar
 curl https://raw.githubusercontent.com/apex/apex/master/install.sh | sh
