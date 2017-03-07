@@ -69,6 +69,11 @@ resource "aws_iam_policy_attachment" "logconf_to_api" {
 }
 
 /*
+* Uncomment this code if you want to destribute your lambda function
+* without the apex binary 
+*/
+
+/*
 data "archive_file" "buffer" {
   type        = "zip"
   source_dir  = "../../../../code/buffer/functions/proxy"
