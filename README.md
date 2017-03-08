@@ -14,6 +14,6 @@ Here were the basic requirements for the project:
 
 To accomplish this I needed a few components:
 
-- A front-end to take in HTTP requests. (API Gateway)
-- A back-end to do something with the requests and generate responses. (Lambdas)
-- A datastore to keep all the associated short tokens and API responses.
+- A front-end to take in HTTP requests. [API Gateway](http://docs.aws.amazon.com/en_en/apigateway/latest/developerguide/welcome.html)
+- A back-end to do something with the requests and generate responses. [AWS Lambda](http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html)
+- A datastore to keep all the associated short tokens and API responses. [AWS Dynamo](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.html)
