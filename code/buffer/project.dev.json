@@ -1,8 +1,6 @@
 {
   "name": "buffer",
   "description": "Build Your Serverless API Caching service using APIGateway, Lambda and DynamoDB",
-  "memory": 128,
-  "timeout": 5,
   "role": "arn:aws:iam::520296017627:role/dev-buffer-api",
   "environment": {},
   "runtime": "python",
