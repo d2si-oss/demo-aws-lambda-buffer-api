@@ -1,20 +1,20 @@
 import boot
 
-import sys
 import unittest
 import boto3
 import cache
+from cache import Cache
 
 print "---- Loading from ---"
 print cache.__file__
 
-from cache import Cache
 
 AWS_DEFAULT_REGION = 'eu-west-1'
 TABLE_NAME = 'dev-buffer-api-proxy'
 ENDPOINT_URL = 'http://localhost:8000'
 AWS_ACCESS_KEY_ID = ''
 AWS_SECRET_ACCESS_KEY = ''
+
 
 class TestCache(unittest.TestCase):
     def setUp(self):
@@ -64,11 +64,11 @@ class TestCache(unittest.TestCase):
         self.assertEqual(len(key), Cache.MAX_DIGITS)
 
     def testSetDoc(self):
-        self.cache.set_doc('/check', 69097, { 'hello': 'world' } )
-        doc = self.cache.get_doc('/check', 69097)
+        self.cache.set_doc('/check', 69097, {'hello': 'world'})
+        # doc = self.cache.get_doc('/check', 69097)
 
     def testGetDoc(self):
-        dico = { 'hello': 'world' }
+        dico = {'hello': 'world'}
         self.cache.set_doc('/check', 69987, dico)
         doc = self.cache.get_doc('/check', 69987)
         assert doc is not None
@@ -76,11 +76,12 @@ class TestCache(unittest.TestCase):
 
     def testBase62(self):
         o = self.cache.base62_encode(0)
-        self.assertEqual(o,'a')
+        self.assertEqual(o, 'a')
 
     def testDocExist(self):
         doc = self.cache.get_doc('/my-way', 45345369987)
         assert doc is None
+
 
 if __name__ == "__main__":
     unittest.main()
