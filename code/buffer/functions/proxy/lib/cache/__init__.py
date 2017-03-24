@@ -53,9 +53,18 @@ class CacheBase(object):
 class Cache(CacheBase):
     cache_lifetime = 24 * 3600 # db_cache = 24h;
 
-    def __init__(self, region_name, table_name):
+    def __init__(self,
+                 region_name,
+                 table_name,
+                 endpoint_url=None,
+                 aws_access_key_id=None,
+                 aws_secret_access_key=None):
         print('Cache will use ' + table_name)
-        self.dynamodb = boto3.resource('dynamodb', region_name = region_name )
+        self.dynamodb = boto3.resource('dynamodb',
+                                       region_name=region_name,
+                                       endpoint_url=endpoint_url,
+                                       aws_access_key_id=aws_access_key_id,
+                                       aws_secret_access_key=aws_secret_access_key)
         self.table = self.dynamodb.Table(table_name)
 
     def get_doc(self, _type, identifier):
