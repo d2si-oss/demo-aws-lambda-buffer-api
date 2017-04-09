@@ -1,8 +1,19 @@
+sudo: required
+
 language: python
+
+services:
+  - docker
+
 python:
 - '2.7'
 git:
   depth: 10
+
+before_install:
+  - docker pull apeyrard/dynamodb_local
+  - docker run -d -p 127.0.0.1:8000:8000 apeyrard/dynamodb_local
+
 install:
   - sudo script/install.sh
 script:

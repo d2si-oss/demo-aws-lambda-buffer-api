@@ -27,3 +27,6 @@ tmp/*
 code/**/vendor/*
 code/*/report/*
 */build/*
+
+# vim swap files
+*.swp
