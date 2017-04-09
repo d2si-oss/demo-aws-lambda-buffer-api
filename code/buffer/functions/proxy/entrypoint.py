@@ -37,16 +37,15 @@ def log_event(event):
     log.debug('query: '+ str(event.get('query', '')))
 
 def query(url, method, headers, data, params, stage):
-    if method == 'get' or method == 'post':
-        buffy = Cache(AWS_DEFAULT_REGION, stage + TABLE_NAME_SUF)
-        payload = dict(data.items() + params.items())
-        doc = buffy.get_doc(url, payload)
-        if doc is None:
-            doc = requests.__getattribute__(method)(url, headers=headers, data=data, params=params).text
-            buffy.set_doc(url, payload, doc)
-            return doc
-        else:
-            return doc
+    buffy = Cache(AWS_DEFAULT_REGION, stage + TABLE_NAME_SUF)
+    payload = dict(data.items() + params.items())
+    doc = buffy.get_doc(url, payload)
+    if doc is None:
+        doc = requests.request(method, url, headers=headers, data=data, params=params).text
+        buffy.set_doc(url, payload, doc)
+        return doc
+    else:
+        return doc
 
     if response.status_code != requests.codes.ok:
         response.raise_for_status()
